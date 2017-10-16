@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <title>D17 Graduate Exhibition</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="grad.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA70y1AvjznqG3PiF7cvkdxUzphgcW9rtQ'></script>
+
+  <!-- Custom styles for this template -->
+  <style>
+    body {
+      padding-top: 54px;
+    }
+    
+    @media (min-width: 992px) {
+      body {
+        padding-top: 56px;
+      }
+    }
+    
+    .no-js #loader {
+      display: none;
+    }
+    
+    .js #loader {
+      display: block;
+      position: absolute;
+      left: 100px;
+      top: 0;
+    }
+    
+    .se-pre-con {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: url(d17load.gif) center no-repeat #fff;
+    }
+
+  </style>
+
+</head>
+<script>
+  $(window).load(function() {
+    // Animate loader off screen
+    $(".se-pre-con").fadeOut("slow");;
+  });
+
+</script>
+
+<body>
+
+  <div class="se-pre-con"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="brand/logo%20small.png">
+
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#highlight-reel" style="font-family: 'Muli', sans-serif; color: black;">Home
+                <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about-event" style="font-family: 'Muli', sans-serif;color: black; padding-left:20px;">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#meet-team" style="font-family: 'Muli', sans-serif; color: black; padding-left:20px;">Team</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#spons" style="font-family: 'Muli', sans-serif; color: black; padding-left:20px;">Sponsors</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#contact-us" style="font-family: 'Muli', sans-serif; color: black; padding-left:20px;">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container-fluid">
+
+
+
+    <div style="text-align:center">
+
+      <br>
+      <video id="highlight-reel" width="100%">
+        <source src="D17%20Video.mp4" type="video/mp4">
+
+      </video>
+      <button class="playa-but" id="negative" style="padding-left:20px;padding-bottom:5px; width:10%;">
+        <img src="images/rewind.png" style="padding-bottom:5px;">
+      </button>
+
+      <button id="playa-but" class="playa-but" onclick="playPause()" style="padding-left:20px;padding-bottom:5px; padding-top:5px;width:10%;">
+        <img src="images/play.png" style=" padding-left:5px;padding-bottom:5px;width:90%;">
+      </button>
+      <button class="playa-but" id="speed" style="padding-left:20px;padding-bottom:5px ;width:10%;">
+        <img src="images/seek.png" style=" padding-left:5px; padding-bottom:5px;">
+      </button>
+      <button id="pause-but" class="playa-but" onclick="pause()" style="padding-left:20px;padding-bottom:5px; width:10%;">
+        <img src="images/pause.png" style=" padding-left:5px; padding-bottom:5px; width:100%;">
+      </button>
+
+
+    </div>
+
+    <script>
+      var myVideo = document.getElementById("highlight-reel");
+
+      function playPause() {
+        if (myVideo.paused)
+          myVideo.play();
+        else
+          myVideo.pause();
+      }
+
+      function pause() {
+        if (myVideo.play)
+          myVideo.pause();
+      }
+
+      var intervalRewind;
+      $(myVideo).on('play', function() {
+        myVideo.playbackRate = 1.0;
+        clearInterval(intervalRewind);
+      });
+      $(myVideo).on('pause', function() {
+        myVideo.playbackRate = 1.0;
+        clearInterval(intervalRewind);
+      });
+
+      $("#speed").click(function() { // button function for 4x fast speed forward
+        myVideo.playbackRate = 4.0;
+      });
+
+
+      $("#negative").click(function() { // button function for rewind
+        intervalRewind = setInterval(function() {
+          myVideo.playbackRate = 1.0;
+          if (myVideo.currentTime == 0) {
+            clearInterval(intervalRewind);
+            myVideo.pause();
+          } else {
+            myVideo.currentTime += -.1;
+          }
+        }, 30);
+      });
+
+    </script>
+
+
+
+
+
+
+
+
+    <div class="row" style="padding-top:50px;">
+      <div class="about-event" id="about-event">
+
+
+
+        <div class="d17-words" id="d17-words">
+          <section class="wrapper">
+            <h3 class="sentence" style="font-size:10vw">Design is
+              <div class="fadeIn" style="font-size:10vw">
+                <br>
+                <span>Passion.</span>
+                <span>Inclusive.</span>
+                <span>Accessible.</span>
+                <span>Exploration.</span>
+                <span>Connection.</span>
+                <span>Sharing.</span>
+                <span>Empathy.</span>
+                <span>Discovery.</span>
+                <span>User Needs.</span>
+                <span>Solutions.</span>
+                <span>Innovation.</span>
+                <span>Confidence.</span>
+                <span>Community.</span>
+                <span>Passion.</span>
+                <span>Inclusive.</span>
+                <span>Accessible.</span>
+                <span>Exploration.</span>
+                <span>Connection.</span>
+                <span>Sharing.</span>
+                <span>Empathy.</span>
+                <span>Discovery.</span>
+                <span>User Needs.</span>
+                <span>Solutions.</span>
+                <span>Innovation.</span>
+                <span>Confidence.</span>
+                <span>Community.</span>
+                <span>Passion.</span>
+                <span>Inclusive.</span>
+                <span>Accessible.</span>
+                <span>Exploration.</span>
+                <span>Connection.</span>
+                <span>Sharing.</span>
+                <span>Empathy.</span>
+                <span>Discovery.</span>
+                <span>User Needs.</span>
+                <span>Solutions.</span>
+                <span>Innovation.</span>
+                <span>Confidence.</span>
+                <span>Community.</span>
+              </div>
+            </h3>
+
+
+            <br>
+            <br>
+          </section>
+
+        </div>
+        <div style="background-color:#EE5B33; width:100%;">
+
+          <div class="col-md-11 col-md-offset-3" style="padding-top: 90px; padding-bottom: 90px; padding-left: 10%; padding-right: 10%; ">
+            <h1 style="color:white;font-family:
+                       'Montserrat', sans-serif;">The Annual Show That Has Everyone Talking </h1>
+            <p class="info-text" style="color:white;">
+
+              Students undergoing the Bachelor of Design Computing and Master of Interaction Design and Electronic Arts represent the intersection of two worlds; design and technology. These degrees encompass the approach necessary to invent elegant, commercially viable products and services. The 2017 exhibition brings together projects from both courses; individual or collective, they are realised by the students who have proposed new solutions and designs to a world filled with pain points. Their projects showcase ground-breaking new ideas in emerging digital technologies and creative thinking across robotics and drones, mobile apps, 3D modelling, interactive digital installations and wearable technology. Not only an event of educational significance, the opening night is a joyful celebration of the unwavering dedication and enormous achievements of our students. Show your support and join the celebration!
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+    <div style="padding:50px;"></div>
+    <div class="col-md-11 col-md-offset-3" style="padding-top: 150px; display: block; margin:0;">
+
+
+      <ul id="countdown">
+        <li id="days">
+
+        </li>
+        <li id="hours">
+
+        </li>
+        <li id="minutes">
+
+        </li>
+        <li id="seconds">
+
+        </li>
+        <h1 style="text-align:center; font-family: 'Montserrat', sans-serif; 
+  font-weight: bold; color: #DBD2C9; font-size: 2em; padding-top:30px;">Until The Exhibition</h1>
+      </ul>
+
+    </div>
+    <div class="Where" style="background-color:#FAAF3A; padding-bottom:50px;  width:100%;">
+
+
+      <div class="col-md-11 col-md-offset-3" style="padding: 20px;">
+
+        <div style='height: 50px; display:block; margin: 0 auto;  clear: left; padding-top: 30px;padding-left:25px;'>
+          <div id='gmap_canvas' style='height:400px;width:520px; float: right; clear: left; '></div>
+          <style>
+            #gmap_canvas img {
+              max-width: none!important;
+              background: none!important
+            }
+
+          </style>
+
+        </div>
+
+        <script type='text/javascript'>
+          function init_map() {
+            var myOptions = {
+              zoom: 14,
+              center: new google.maps.LatLng(-33.8887073, 151.19210429999998),
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+            marker = new google.maps.Marker({
+              map: map,
+              position: new google.maps.LatLng(-33.8887073, 151.19210429999998)
+            });
+            infowindow = new google.maps.InfoWindow({
+              content: '<strong>Faculty of Architecture, Design & Planning, The Wilkinson Building</strong><br>148 City Rd, Darlington NSW<br>2008 Sydney<br>'
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.open(map, marker);
+            });
+            infowindow.open(map, marker);
+          }
+          google.maps.event.addDomListener(window, 'load', init_map);
+
+        </script>
+
+        <h1 style="padding:10px; margin-left: 15px; font-family: 'Montserrat', sans-serif; 
+        font-weight: bold; color: #fff; padding:15px;">Where?</h1>
+        <p style="font-family: 'Muli', sans-serif; font-size: 25px; color: #fff; padding:15px;"> Faculty of Architecture, Design and Planning
+          <br> University of Sydney</p>
+
+        <h1 style="padding:20px; font-family: 'Montserrat', sans-serif; font-weight: bold;color: #fff; padding:15px;">When?</h1>
+        <p style="font-family: 'Muli', sans-serif; font-size: 25px; color: #fff; padding:15px;"> <b style="font-family: 'Montserrat', sans-serif; font-weight:bold;">Opening Night:</b> 23rd November 2017
+          <br> <b style="font-family: 'Montserrat', sans-serif; font-weight:bold;">Exhibition:</b> 23rd - 26th November 2017
+        </p>
+
+      </div>
+
+
+    </div>
+    <div class="row heading" id="meet-team">
+      <div class="col-md-11 col-md-offset-3" style="padding-top: 110px; padding-left: 10% ">
+        <h1 align="center" style="font-size:60px; padding-bottom:25px; font-family: 'Fredoka One', cursive;">Meet Our Team</h1>
+
+      </div>
+    </div>
+
+    <div class="row team-row" style="padding-bottom:25px;">
+      <!-- Fuad -->
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member text-center">
+          <div class="team-img">
+            <img src="images/Fuad.jpg" alt="" style="width:100%;">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  Designer? Voyager? Outlander? Nobody knows who he is but he is and he's part of the gradshow team, carefully crafting the tiniest details as the show's co-curator, making sure you'll find it rich and insightful, giving a glimpse on the future and of what it may hold. Personally? I love all the digital and hybrid, crossovering sciences, jumping around the world, drinking double pulp orange juice and proving that the impossible may actually be quite possible
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Fuad Soudah</h6>
+          <span>Exhibition Curation</span>
+        </div>
+      </div>
+      <!-- end Fuad -->
+      <!-- Gen -->
+
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member text-center">
+          <div class="team-img">
+            <img src="images/Genevieve.png" alt="" style="width:100%;">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  Hi! I'm Gen and I am on this years Graduate Exhibition marketing team. I am working my hardest to keep you in the know and ensuring you know how amazing this event will be. I am also the person who built the website you are looking at right now! I never imagined that I would find a degree that combined all my passions into one but I have. I hope you enjoy the amazing and interesting projects and the cute freebies. I can guarantee that they will be out of this world. If you see me around, come say hi. I am always happy to chat and am way too talkative for my own good.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Genevieve Martin</h6>
+          <span>Marketing + Website</span>
+        </div>
+      </div>
+      <!-- end gen-->
+      <!-- rob-->
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member last text-center">
+          <div class="team-img">
+            <img src="images/Rob.jpg" alt="" style="width:100%;">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  Hi, I'm Robert, D17's Submissions Manager. This years Graduation Exhibition falls on a huge year of technological advancements. Having seen first hand the impressive projects that range from beautiful designs to immersive Virtual Reality experiences, I am most excited about this year's Graduation Exhibition! This team has worked so hard to bring together everything you see here and I really hope you enjoy the show! If you see me around, don't hesitate to stop by for a chat about anything and everything.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Robert Yuan</h6>
+          <span>Submissions</span>
+        </div>
+      </div>
+      <!-- end rob -->
+    </div>
+    <div class="row team-row" style="padding-bottom:25px;">
+      <!-- Koji -->
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member text-center">
+          <div class="team-img">
+            <img src="images/Koji.jpg" alt="">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  G'day! I am Koji, and first of all, thank you for stopping by to read this section! It’s been a tremendous journey for us to curate this show, but here we are, ready to present to you the best of the best in Design Computing and MIDEA. We are spectrum of unique individuals who can’t be defined by words, and D17 is the perfect opportunity for you to understand us better on what we do, and will do. From futuristic works to designs that can be applied today, we hope you to immerse in the colours our cohort can express, to re-imagine and shape our future!
+
+
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Koji Yajima</h6>
+          <span>Catalogue</span>
+        </div>
+      </div>
+      <!-- end Koji -->
+      <!-- Tommy -->
+
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member text-center">
+          <div class="team-img">
+            <img src="images/Tommy.jpg" alt="" style="width:100%;">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  Hi, I'm Tommy, one-third of the D17 exhibition curation team. With a lot of care and love, we have designed the exhibition to cater towards your enjoyment and wonder, while also taking in what it means to be a Design Computing student. Our peers have worked extremely hard for three years to be able to create their work, and it’s our job to make sure that we go above and beyond to bring these exceptional ideas to life. So treat your eyes to some beautiful scenery, grab a drink with friends, and if you see me around, hit me up!
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Tommy Dinh</h6>
+          <span>Exhibition Curation + Project Management</span>
+        </div>
+      </div>
+      <!-- end Tommy-->
+      <!--Carissa-->
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member last text-center">
+          <div class="team-img">
+            <img src="images/Carissa.jpg" alt="" style="width:100%;">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  Greetings! I am part of D17’s curation team – here to design the details of the show space to create an enjoyable and memorable experience! Design Computing is an amazing course and we hope that D17 doesn’t merely showcase what we do, but truly gets you excited for the future that our graduates will craft. So hope to see you around – enjoying the drinks, the food and the talks with our enthusiastic peers. And if you bump into me… come say hi and have a chat about design, or games, or food, or anything!
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Carissa Yu</h6>
+          <span>Exhibition Curation</span>
+        </div>
+      </div>
+      <!-- end Carissa -->
+    </div>
+    <div class="row team-row">
+      <!-- Colin -->
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member text-center">
+          <div class="team-img">
+            <img src="images/Colin.jpg" alt="" style="width:100%;">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  Hi I’m Colin, one half of the Graduation Exhibition marketing team. For many years our friends and family have been fascinated by what exactly it is that we do as Design Computing students, and so we work our hardest in preparation of D17, in the hopes of showing you how we understand, design and enhance the ways people live. Come by for food, drinks, chats and interactive activities that we hope would inspire you to pursue your passions!
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Colin Li</h6>
+          <span>Marketing</span>
+        </div>
+      </div>
+      <!-- end Colin -->
+      <!-- Jess N -->
+
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member text-center">
+          <div class="team-img">
+            <img src="images/Jessica.jpg" alt="" style="width:100%;">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  Hello! I'm Jess the D17's Sponsorship Manager. This years Graduate Exhibition is shaping up to be the event of the year with a range of different people and companies getting involved. I've been lucky enough to have had the opportunity to complete the course of my dreams the past three years and can't wait to show you what ive accomplished during this time. I absolutely love meeting new people so definitely feel free to come up to me and have a chat!
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Jessica Norris</h6>
+          <span>Sponsorship + Submissions</span>
+        </div>
+      </div>
+      <!-- end Jess N-->
+      <!--Jess T-->
+      <div class="col-md-4 col-sm-6 team-wrap">
+        <div class="team-member last text-center">
+          <div class="team-img">
+            <img src="images/Jess.jpg" alt="" style="width:100%;">
+            <div class="overlay">
+              <div class="team-details text-center">
+                <p>
+                  Hi, I’m (also) Jess! Being a DesCom student over the past 3 years has helped me grow my capabilities as a designer and meet a bunch of new people so I’m really excited to be able to give back to the course this way. Design Computing is an awesome course that covers a wide variety of disciplines and our fellow students have been working hard to showcase the progress they’ve made over the years through their imagination and creativity! It’s an honour for me to be able to work on the catalogue alongside the rest of the awesome D17 team!
+                </p>
+              </div>
+            </div>
+          </div>
+          <h6 class="team-title">Jessica Tong</h6>
+          <span>Catalogue</span>
+        </div>
+      </div>
+      <!-- end Jess T -->
+    </div>
+
+    <div class="row" style="padding-top:50px;">
+      <div class="Sponsors" id="spons">
+        <div class="col-md-11 col-md-offset-3" style="padding-top: 110px; padding-left: 10% ">
+
+
+          <h1 align="center" style="font-size:60px; padding-bottom:25px; font-family: 'Fredoka One', cursive;">Sponsors</h1>
+          <img src="images/sponsors.png" style="width:100%">
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="contacts" id="contact-us">
+      <div style="padding-top: 10px;">
+
+
+        <a href="D17%20Grad%20.ics"><img src="icons/calendar.svg" style="width:10%;padding-bottom:15px;display: block; margin:0 auto;">
+        </a>
+        <p style="text-align: center;">Add event to Calendar</p>
+
+
+        <a href="https://www.facebook.com/events/162235844358456/"><img src="icons/facebook.svg" style="width:10%;padding-bottom:15px;display: block; margin:0 auto;">
+          <p style="text-align: center;">Follow event on Facebook</p>
+
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Nov 23, 2017 18:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+      // Get todays date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now an the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="countdown"
+      document.getElementById("days").innerHTML = days + "<br>\n days";
+      document.getElementById("hours").innerHTML = hours + "<br>\n hours ";
+      document.getElementById("minutes").innerHTML = minutes + "<br>\n minutes ";
+      document.getElementById("seconds").innerHTML = seconds + "<br>\n seconds ";
+
+
+
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+
+    //Scroll to sections
+
+    $('a[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+          return false;
+        }
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
